@@ -235,8 +235,8 @@ export interface EditorMethods {
   registerCallback: RegisterCallback;
   addEventListener: AddEventListener;
   loadBlank: LoadBlank;
-  removeEventListener: RemoveEventListener;
-  exportImage: ExportImage;
+  removeEventListener?: RemoveEventListener;
+  exportImage?: ExportImage;
 }
 
 export interface Editor extends EditorMethods {
