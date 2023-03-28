@@ -197,6 +197,10 @@ export type FileUploadCallback = (
   done: FileUploadDoneCallback
 ) => void;
 export type FileUploadDoneCallback = (data: FileUploadDoneData) => void;
+export type FileRemovedCallback = (
+    file: { id: number },
+    done: () => void
+) => void;
 
 export type DisplayConditionDoneCallback = (
   data: DisplayCondition | null
@@ -209,6 +213,7 @@ export type DisplayConditionCallback = (
 export type RegisterCallback = {
   (type: 'image', callback: FileUploadCallback): void;
   (type: 'displayCondition', callback: DisplayConditionCallback): void;
+  (type: 'image:removed', callback: FileRemovedCallback): void;
 };
 export type AddEventListener = (type: string, callback: EventCallback) => void;
 export type RemoveEventListener = (
@@ -225,6 +230,51 @@ export type ExportHtml = (
 export type ExportImage = (callback: ExportImageCallback) => void;
 export type SetMergeTags = (mergeTags: Array<MergeTag>) => void;
 
+export type BodyValues = {
+  backgroundColor: string;
+  contentWidth: string;
+  fontFamily: {
+    label: string;
+    value: string;
+    url: string;
+  };
+};
+
+export type ImageData = {
+  id: number;
+  location: string;
+  width: number;
+  height: number;
+  contentType: string;
+  source: 'user';
+  size?: number;
+}
+
+export type BlockData = {
+  category: string;
+  tags: Array<any>;
+  data: Array<any>;
+  displayMode: string;
+}
+
+export type ProviderPagination = {
+  page: number;
+  parPage: number;
+  total: number;
+  hasMore: boolean;
+};
+
+export type ProviderData = { page?: number, perPage?: number };
+export type UserUploadsProviderDoneCallback = (images: Array<ImageData>, pagination?: ProviderPagination) => void;
+export type BlocksProviderDoneCallback = (blocks: Array<BlockData>, pagination?: ProviderPagination) => void;
+export type UserUploadsProvider = (params: ProviderData, done: UserUploadsProviderDoneCallback) => void
+export type BlocksProvider = (params: ProviderData, done: BlocksProviderDoneCallback) => void
+export type RegisterProviderCallback = {
+  (name: 'userUploads', provider: UserUploadsProvider): void
+  (name: 'blocks', provider: BlocksProvider): void
+};
+
+
 export interface EditorMethods {
   saveDesign: SaveDesign;
   exportHtml: ExportHtml;
@@ -235,6 +285,8 @@ export interface EditorMethods {
   loadBlank: LoadBlank;
   removeEventListener?: RemoveEventListener;
   exportImage?: ExportImage;
+  setBodyValues?: (bodyValues: BodyValues) => void;
+  registerProvider?: RegisterProviderCallback;
 }
 
 export interface Editor extends EditorMethods {
