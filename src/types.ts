@@ -259,7 +259,7 @@ export type BlockData = {
 
 export type ProviderPagination = {
   page: number;
-  parPage: number;
+  perPage: number;
   total: number;
   hasMore: boolean;
 };
@@ -285,7 +285,7 @@ export interface EditorMethods {
   loadBlank: LoadBlank;
   removeEventListener?: RemoveEventListener;
   exportImage?: ExportImage;
-  setBodyValues?: (bodyValues: BodyValues) => void;
+  setBodyValues?: (bodyValues?: BodyValues) => void;
   registerProvider?: RegisterProviderCallback;
   setDesignMode?: (editMode: 'edit' | 'view') => void;
 }
