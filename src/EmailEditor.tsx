@@ -19,14 +19,13 @@ import {
   SetMergeTags,
 } from './types';
 
-import pkg from '../package.json';
 import { loadScript } from './loadScript';
 
 let lastEditorId = 0;
 
-const EmailEditor = React.forwardRef<EditorRef, EmailEditorProps>(
+export const EmailEditor = React.forwardRef<EditorRef, EmailEditorProps>(
   (props, ref) => {
-    const { onLoad, onReady, scriptUrl, minHeight = 500, style = {} } = props;
+    const { onReady, scriptUrl, minHeight = 500, style = {} } = props;
 
     const editorId = useRef(props.editorId || `editor-${++lastEditorId}`);
     const isLoadedRef = useRef(false);
@@ -50,8 +49,8 @@ const EmailEditor = React.forwardRef<EditorRef, EmailEditorProps>(
           id: editorId.current,
           displayMode: 'email',
           source: {
-            name: pkg.name,
-            version: pkg.version,
+            name: 'react-email-editor',
+            version: 'PACKAGE_VERSION',
           },
         })
       );
@@ -127,11 +126,8 @@ const EmailEditor = React.forwardRef<EditorRef, EmailEditorProps>(
         }
       }
 
-      // @deprecated
-      onLoad && onLoad();
-
       if (onReady) editor.addEventListener('editor:ready', onReady);
-    }, [editor, addEventListener, onLoad, onReady, props]);
+    }, [editor, addEventListener, onReady, props]);
 
     useImperativeHandle(
       ref,
@@ -170,5 +166,3 @@ const EmailEditor = React.forwardRef<EditorRef, EmailEditorProps>(
     );
   }
 );
-
-export default EmailEditor;

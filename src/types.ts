@@ -152,8 +152,6 @@ export interface EmailEditorProps {
   projectId?: number | undefined;
   scriptUrl?: string | undefined;
   locale?: string | undefined;
-  /** @deprecated Use **onReady** instead */
-  onLoad?(): void;
   onReady?(): void;
 }
 

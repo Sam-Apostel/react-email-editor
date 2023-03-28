@@ -1,51 +1,45 @@
 {
-  "name": "@spatie/react-email-editor",
+  "name": "react-email-editor",
   "version": "1.7.7",
   "description": "Unlayer's Email Editor Component for React.js",
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
-  "files": [
-    "dist",
-    "src"
-  ],
+  "source": "src/index.ts",
+  "main": "dist/main.js",
+  "module": "dist/module.js",
+  "types": "dist/types.d.ts",
   "engines": {
-    "node": ">=10"
+    "node": ">=12"
   },
   "scripts": {
-    "start": "tsdx watch",
-    "build": "tsdx build",
-    "test": "tsdx test",
-    "test:watch": "tsdx test --watch",
-    "test:coverage": "tsdx test --coverage",
-    "lint": "tsdx lint",
-    "prepare": "tsdx build",
-    "release": "npm run build && npm publish",
-    "netlify-build": "cd demo && npm install && npm run build"
+    "start": "parcel watch",
+    "build": "parcel build",
+    "test": "parcel test",
+    "test:watch": "parcel test --watch",
+    "test:coverage": "parcel test --coverage",
+    "lint": "parcel lint",
+    "prepare": "parcel build",
+    "release": "npm run build && npm publish"
   },
   "peerDependencies": {
     "react": ">=15"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "tsdx lint"
-    }
-  },
   "devDependencies": {
-    "@rollup/plugin-replace": "^5.0.2",
+    "@cimonitor/parcel-transformer-package-version": "^0.1.0",
+    "@parcel/packager-ts": "^2.8.3",
+    "@parcel/transformer-typescript-tsc": "^2.8.3",
+    "@parcel/transformer-typescript-types": "^2.8.3",
     "@testing-library/react": "^13.4.0",
+    "@types/node": "^18.15.10",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
-    "husky": "^8.0.3",
+    "parcel": "^2.8.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "tsdx": "^0.14.1",
-    "tslib": "^2.4.1",
     "typescript": "^4.9.4"
   },
   "author": "",
-  "homepage": "https://github.com/unlayer/react-email-editor#readme",
+  "homepage": "https://github.com/Sam-Apostel/react-email-editor#readme",
   "license": "MIT",
-  "repository": "https://github.com/unlayer/react-email-editor.git",
+  "repository": "https://github.com/Sam-Apostel/react-email-editor.git",
   "keywords": [
     "react-component"
   ]
