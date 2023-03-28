@@ -166,8 +166,8 @@ export interface ImageExport {
 }
 
 export interface HtmlOptions {
-  cleanup: boolean;
-  minify: boolean;
+  cleanup?: boolean;
+  minify?: boolean;
 }
 
 export interface FileInfo {
@@ -287,6 +287,7 @@ export interface EditorMethods {
   exportImage?: ExportImage;
   setBodyValues?: (bodyValues: BodyValues) => void;
   registerProvider?: RegisterProviderCallback;
+  setDesignMode?: (editMode: 'edit' | 'view') => void;
 }
 
 export interface Editor extends EditorMethods {
