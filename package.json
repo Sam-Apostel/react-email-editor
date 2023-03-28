@@ -1,6 +1,6 @@
 {
   "name": "@spatie/react-email-editor",
-  "version": "1.8.2",
+  "version": "1.8.3",
   "description": "Unlayer's Email Editor Component for React.js",
   "source": "src/index.ts",
   "main": "dist/main.js",
